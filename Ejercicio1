@@ -1,0 +1,49 @@
+import scala.collection.mutable.ArrayBuffer
+
+
+object Ejercicio1 {
+  
+  def main(args: Array[String]): Unit = {
+    
+    val palabras = ArrayBuffer[String]()
+    
+    var opcion = 0;
+    var cad = " "
+    
+    do{
+      println("Desea agregar una palabra a su lista? 1.SI  0.NO")
+        opcion = readInt()
+        if(opcion == 1){
+          println("Ingrese palabra")
+           cad = readLine()
+           palabras += cad
+        }     
+    }while(opcion != 0)
+    
+    println("Su Lista es: ")
+      mostrarLista(palabras)
+      
+   println()
+   println("Ingrese una palabra a buscar: ")
+   val palabra = readLine()
+   
+   println("La palabra se repite: " + contarPalabra(palabra, palabras) + " veces.")
+  }
+  
+  def mostrarLista(vector : ArrayBuffer[String]) = {
+    for(v <- vector)
+      print(v + " ")
+  }
+  
+  def contarPalabra(palabra: String, vector : ArrayBuffer[String]) : Int = {
+    var cont = 0
+    
+    for(v <- vector){
+        if(palabra == v)
+          cont += 1
+    }
+      
+   cont
+  }
+  
+}
